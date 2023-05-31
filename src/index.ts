@@ -58,6 +58,3 @@ server.on('error', (error) => console.error(error));
 server.listen(config.port, () => {
   console.log(`Now listening on port ${config.port}`);
 });
-
-
-console.log(router.stack.map(i => i.path));

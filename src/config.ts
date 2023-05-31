@@ -11,7 +11,7 @@ export type Configuration = {
 export const config = envSmart.config<Configuration>((env) => {
   return {
     githubPAT: env.GITHUB_TOKEN,
-    port: !isNaN(parseInt(env.PORT)) ? parseInt(env.PORT) : 8080,
+    port: !isNaN(parseInt(env.PORT)) ? parseInt(env.PORT) : 53123,
     routePrefix: env.ROUTE_PREFIX ? env.ROUTE_PREFIX : undefined,
     eventLimit: !isNaN(parseInt(env.EVENT_LIMIT))
       ? parseInt(env.EVENT_LIMIT)
