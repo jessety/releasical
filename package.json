@@ -1,15 +1,15 @@
 {
-  "name": "boilerplate-typescript-service",
+  "name": "releasical",
   "version": "0.0.1",
   "private": true,
   "description": "",
-  "homepage": "https://github.com/jessety/boilerplate-typescript-service#readme",
+  "homepage": "https://github.com/jessety/releasical#readme",
   "bugs": {
-    "url": "https://github.com/jessety/boilerplate-typescript-service/issues"
+    "url": "https://github.com/jessety/releasical/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jessety/boilerplate-typescript-service.git"
+    "url": "git+https://github.com/jessety/releasical.git"
   },
   "license": "MIT",
   "author": "Jesse Youngblood",
@@ -23,8 +23,8 @@
     "build": "npm run clean && tsc",
     "build:start": "npm run build && npm run start",
     "clean": "rimraf build",
-    "docker:build": "docker build -t jessety/boilerplate-typescript-service .",
-    "docker:start": "docker run -p 8080:8080 --add-host=host.docker.internal:host-gateway -d jessety/boilerplate-typescript-service",
+    "docker:build": "docker build -t jessety/releasical .",
+    "docker:start": "docker run -p 8080:8080 --add-host=host.docker.internal:host-gateway -d jessety/releasical",
     "format": "sort-package-json && prettier --write '**/*.{ts,js,mjs,cjs,json,yml,md}' && eslint --fix --cache .",
     "lint": "eslint --cache . && ec .",
     "prepare": "husky install",
@@ -35,6 +35,17 @@
     "start:watch": "nodemon",
     "test": "jest",
     "test:watch": "jest --watchAll"
+  },
+  "dependencies": {
+    "@types/koa": "^2.13.6",
+    "@types/koa-logger": "^3.1.2",
+    "@types/koa-router": "^7.4.4",
+    "env-smart": "^2.3.0",
+    "ical-generator": "^4.1.0",
+    "koa": "^2.14.2",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^12.0.0",
+    "octokit": "^2.0.19"
   },
   "devDependencies": {
     "@jessety/eslint-config": "^2.4.0",

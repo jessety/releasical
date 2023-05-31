@@ -1,35 +1,36 @@
-# boilerplate-typescript-service
+# releasical
 
-Boilerplate for a TypeScript Node service
+> ICS calendar feed server for GitHub releases
 
-[![ci](https://github.com/jessety/boilerplate-typescript-service/workflows/ci/badge.svg)](https://github.com/jessety/boilerplate-typescript-service/actions/workflows/ci.yml)
+Ever wanted your GitHub releases to start showing up in your calendar? Me either, but here we are.
 
-## Includes
+[![ci](https://github.com/jessety/releasical/workflows/ci/badge.svg)](https://github.com/jessety/releasical/actions/workflows/ci.yml)
 
-- TypeScript configuration
-- `ts-jest` setup for automated testing
-- ESLint rules & `editorconfig` for linting
-- Prettier and ESLint for deterministic code formatting
-- CI - build, lint & test
-- GitHub Releases generated with automatic changelogs populated via a configurable template
-- Dependabot configuration
-- VSCode settings
-- Modern JS compilation target (native modules)
-- PM2 ecosystem file
+## Setup
 
-## Release
+First, install dependencies and build the project
 
-First, determine what kind of [semantic versioning](https://semver.org) bump this release will require. Updates should fall into one of three categories: `major` (new functionality with breaking changes) `minor` (new functionality without breaking changes) or `patch` (backwards compatible bug fixes).
+```bash
+npm install
+npm run build
+```
 
-To publish a new release, checkout the make sure your git repository is clean and run one of the following commands:
+Create a `.env` file in the project directory with a GitHub PAT, and optionally a secret key:
 
-- `npm run release:major` (new functionality with breaking changes)
-- `npm run release:minor` (new functionality without breaking changes)
-- `npm run release:patch` (backwards compatible bug fixes)
+```ini
+GITHUB_TOKEN=xxx
+SECRET=yyy
+```
 
-Running any one of these will:
+## Usage
 
-1. Increment the version number in `package.json` (and `package-lock.json` if available)
-2. Create a git tag with the new version number
-3. Push these changes to GitHub, which triggers the `release` workflow in GitHub Actions
-4. The `release` workflow then creates a new GitHub release with changelog automatically populated with all PRs and commits since the last version
+Run the service using `npm start`. To start `untappical` as a pm2 service, run `pm2 start ecosystem.config.json`
+
+To see the feed in your calendar application, add a subscription with the following path:
+`http://host:port/users/username`
+
+So for example, if the server is running on your local machine on port `8080` and the repository you want to monitor for releases is `jessety/releasical`, you would use the URL:
+`http://localhost:8080/jessety/releasical`
+
+If you set a secret key, all requests without it will be ignored:
+`http://localhost:8080/jessety/releasical?secret=yyy`
