@@ -37,7 +37,7 @@
     "test:watch": "jest --watchAll"
   },
   "dependencies": {
-    "@types/koa": "^2.13.6",
+    "@types/koa": "^2.13.7",
     "@types/koa-logger": "^3.1.2",
     "@types/koa-router": "^7.4.4",
     "env-smart": "^2.3.0",
